@@ -17,10 +17,49 @@ class IndoregionController extends Controller
     {
         // Get semua data
         $provinces = Province::all();
-        $regencies = Regency::all();
-        $districts = District::all();
-        $villages = Village::all();
 
-        return view('form',compact('provinces','regencies','districts','villages'));
+        return view('form',compact('provinces'));
+    }
+
+    public function getkabupaten(Request $request)
+    {
+        $id_provinsi = $request->id_provinsi;
+
+        $kabupatens = Regency::where('province_id',$id_provinsi)->get();
+
+        $option = "<option>Pillih Kabupaten...</option>";
+        foreach($kabupatens as $kabupaten){
+            $option.= "<option value='$kabupaten->id'>$kabupaten->name</option>";
+        }
+
+        echo $option;
+    }
+
+    public function getkecamatan(Request $request)
+    {
+        $id_kabupaten = $request->id_kabupaten;
+
+        $kecamatans = District::where('regency_id',$id_kabupaten)->get();
+
+        $option = "<option>Pillih Kecamatan...</option>";
+        foreach($kecamatans as $kecamatan){
+            $option.= "<option value='$kecamatan->id'>$kecamatan->name</option>";
+        }
+
+        echo $option;
+    }
+
+    public function getdesa(Request $request)
+    {
+        $id_kecamatan = $request->id_kecamatan;
+
+        $desas = Village::where('district_id',$id_kecamatan)->get();
+
+        $option = "<option>Pillih Desa...</option>";
+        foreach($desas as $desa){
+            $option.= "<option value='$desa->id'>$desa->name</option>";
+        }
+
+        echo $option;
     }
 }

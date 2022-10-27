@@ -18,4 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/form', [App\Http\Controllers\IndoregionController::class, 'form'])->name('form');
-
+Route::post('/getkabupaten', [App\Http\Controllers\IndoregionController::class, 'getkabupaten'])->name('getkabupaten');
+Route::post('/getkecamatan', [App\Http\Controllers\IndoregionController::class, 'getkecamatan'])->name('getkecamatan');
+Route::post('/getdesa', [App\Http\Controllers\IndoregionController::class, 'getdesa'])->name('getdesa');
