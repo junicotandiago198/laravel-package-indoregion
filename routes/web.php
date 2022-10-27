@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', function () {
-    return view('form');
-});
+Route::get('/form', [App\Http\Controllers\IndoregionController::class, 'form'])->name('form');
+

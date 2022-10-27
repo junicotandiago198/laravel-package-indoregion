@@ -20,24 +20,36 @@
                     <label for="">Provinsi</label>
                     <select class="form-control" id="provinsi">
                         <option>Pillih Provinsi...</option>
+                        @foreach ($provinces as $provinsi)
+                            <option>{{ $provinsi->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="">Kabupaten</label>
                     <select class="form-control" id="kabupaten">
                         <option>Pillih Kabupaten...</option>
+                        @foreach ($regencies as $kabupaten)
+                            <option>{{ $kabupaten->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="">Kecamatan</label>
                     <select class="form-control" id="kecamatan">
                         <option>Pillih kecamatan...</option>
+                        @foreach ($districts as $kecamatan)
+                            <option>{{ $kecamatan->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="">Desa</label>
                     <select class="form-control" id="desa">
                         <option>Pillih Desa...</option>
+                        @foreach ($villages as $desa)
+                            <option>{{ $desa->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </form>
